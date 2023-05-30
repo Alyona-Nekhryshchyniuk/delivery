@@ -1,0 +1,35 @@
+[
+  {
+    "dishName": "Black and White burgers – China, Taiwan and Hong Kong",
+    "imageURL": "https://mcdonaldsblog.in/wp-content/uploads/2015/09/B_W_1.jpg"
+  },
+  {
+    "dishName": "Big Brekkie Beef Burger - New Zealand",
+    "imageURL": "https://i.insider.com/5fb6e46532f2170011f702b1?width=700&format=jpeg&auto=webp"
+  },
+
+  {
+    "dishName": "VsSpaghetti",
+    "imageURL": "https://i.insider.com/5bc75dcefc7e16026424a823?width=700&format=jpeg&auto=webp"
+  },
+  {
+    "dishName": "Iced Tea",
+    "imageURL": "https://images.immediate.co.uk/production/volatile/sites/30/2021/11/Iced-tea-12595fe.jpg?quality=90&webp=true&fit=975,649"
+  },
+  {
+    "dishName": "Grilled Pork Tenderloin With Pineapple Salsa",
+    "imageURL": "https://www.eatthis.com/wp-content/uploads/sites/4/2018/12/healthy-pork-tenderloin-grilled-pineapple-salsa.jpg?resize=640,468&quality=82&strip=all"
+  },
+  {
+    "dishName": "Spicy Grilled Calamari Salad",
+    "imageURL": "https://www.eatthis.com/wp-content/uploads/sites/4/2018/12/healthy-grilled-calamari-salad.jpg?resize=640,468&quality=82&strip=all"
+  },
+  {
+    "dishName": "Spicy-Sweet Grilled Chicken and Pineapple Sandwich",
+    "imageURL": "https://www.eatthis.com/wp-content/uploads/sites/4/2019/01/paleo-grilled-chicken-pinapple-sandwich.jpg?resize=640,468&quality=82&strip=all"
+  },
+  {
+    "dishName": "Ginger Beer",
+    "imageURL": "https://images.immediate.co.uk/production/volatile/sites/30/2021/11/Ginger-beer-ef08bb1.jpg?quality=90&webp=true&fit=975,649"
+  }
+]

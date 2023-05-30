@@ -1,0 +1,38 @@
+[
+    {
+      "dishName": "Crispy Onion Rings and Cheese Puffs",
+      "imageURL": "https://mcdonaldsblog.in/wp-content/uploads/2015/09/McDonalds_Turkey_1.jpg"
+    },
+    {
+      "dishName": "Bulgogi Burger and Honey Butter French Fries – South Korea",
+      "imageURL": "https://mcdonaldsblog.in/wp-content/uploads/2015/09/bulgogi_resized_210915-copy.jpg"
+    },
+    {
+      "dishName": "The McSpicy Paneer and the Big Saucy Paneer wrap",
+      "imageURL": "https://mcdonaldsblog.in/wp-content/uploads/2015/09/PaneerWrap.jpg"
+    },
+    {
+      "dishName": "Taro Pie - Hong Kong",
+      "imageURL": "https://i.insider.com/5bc653d1a5a15c126a111245?width=700&format=jpeg&auto=webp"
+    },
+    {
+      "dishName": "India's Maharaja Mac",
+      "imageURL": "https://i.insider.com/5bcf9290c7621917db69fd32?width=700&format=jpeg&auto=webp"
+    },
+    {
+      "dishName": "Fries covered in paprika-infused cheese sauce - Egypt",
+      "imageURL": "https://i.insider.com/5c9257bcdd086101b824e946?width=700&format=jpeg&auto=webp"
+    },
+    {
+      "dishName": "Japan's Purple McShake",
+      "imageURL": "https://i.insider.com/5bc6a944a5a15c1d69401a72?width=700&format=jpeg&auto=webp"
+    },
+    {
+      "dishName": "Bubur Ayam McD - Malaysia",
+      "imageURL": "https://i.insider.com/5bc75ad5214d3e01a9437a94?width=700&format=jpeg&auto=webp"
+    },
+    {
+      "dishName": "Toblerone McFlurry - Denmark",
+      "imageURL": "https://i.insider.com/5bc75f70b49d7f02c13426e2?width=700&format=jpeg&auto=webp"
+    }
+  ]
