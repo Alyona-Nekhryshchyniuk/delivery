@@ -1,8 +1,23 @@
 import DishCardInCart from '../DishCardInCart/DishCardInCart';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const Cart = ({ cart }) => {
-  const [total, setTotal] = useState('');
+const Cart = ({ cart, setCart }) => {
+  // const [total, setTotal] = useState(() => {
+  //   let fullPrice = 0;
+  //   cart.forEach(dishObj => (fullPrice += +dishObj.price));
+  //   return fullPrice;
+  // });
+
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal(() => {
+      let sum = 0;
+      cart.map(dish => (sum += dish.amount * dish.price));
+      return sum;
+    });
+  }, [cart]);
+
   const submitHandle = e => {
     console.log(cart);
   };
@@ -11,11 +26,13 @@ const Cart = ({ cart }) => {
     <>
       <section>
         <ul>
-          {cart.map(dishObj => (
+          {cart.map(dish => (
             <DishCardInCart
-              key={dishObj.id}
-              dishInCart={dishObj}
-              setTotal={setTotal}
+              key={dish._id}
+              dish={dish}
+              // setTotal={setTotal}
+              setCart={setCart}
+              cart={cart}
             />
           ))}
         </ul>

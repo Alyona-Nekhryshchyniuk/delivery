@@ -11,7 +11,7 @@ const ListToSelectDish = ({ chosenShop, setCart }) => {
       const { dishes } = await response.json();
       setDishes(dishes);
     })();
-  }, []);
+  }, [chosenShop]);
 
   return (
     <section>

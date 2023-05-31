@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import UserForm from '../components/UserForm/UserForm';
 import Cart from '../components/Cart/Cart';
+import EmptyCart from '../components/EmptyCart';
 
-const ShoppingCartPage = ({ cart }) => {
+const ShoppingCartPage = ({ cart, setCart }) => {
   return (
     <div>
       <UserForm />
-      <Cart cart={cart} />
+      {cart.length ? <Cart cart={cart} setCart={setCart} /> : <EmptyCart />}
     </div>
   );
 };

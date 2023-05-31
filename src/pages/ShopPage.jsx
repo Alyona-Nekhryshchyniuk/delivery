@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import SideBar from '../components/SideBar/SideBar';
 import ListToSelectDish from '../components/ListToSelectDish/ListToSelectDish';
 
-const ShopPage = ({ setCart }) => {
+const ShopPage = ({ setCart, cart }) => {
   // const [shops, setShops] = useState([]);
-  const [chosenShop, SetChosenShop] = useState('VilkiPalki');
+  const [chosenShop, setChosenShop] = useState('vilkipalki');
   // useEffect(() => {
   //   async () => {
   //     //   const resp = await fetch('url', get, );
@@ -14,7 +14,7 @@ const ShopPage = ({ setCart }) => {
   // }, []);
   return (
     <div>
-      <SideBar SetChosenShop={SetChosenShop} chosenShop={chosenShop} />
+      <SideBar setChosenShop={setChosenShop} chosenShop={chosenShop} />
       <ListToSelectDish setCart={setCart} chosenShop={chosenShop} />
     </div>
   );
