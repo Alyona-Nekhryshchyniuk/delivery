@@ -1,45 +1,12 @@
-import { useState } from 'react';
+import { useReducer } from 'react';
+import useMyContext from '../../helpers/useMyContext';
+import { amountReducer } from '../../helpers/amountReducer';
 
-const DishCardInCart = ({ dish, setTotal, setCart, cart }) => {
+const DishCardInCart = ({ dish }) => {
   const { dishName, type, imageURL, price } = dish;
 
-  const [amount, setAmount] = useState(dish.amount);
-
-  const removeDishFromCartHandle = e => {
-    setCart(prev => {
-      const ind = prev.indexOf(dish);
-      const copy = [...prev];
-      copy.splice(ind, 1);
-      return copy;
-    });
-  };
-
-  const amountChangehandle = e => {
-    if (e.target.innerHTML === '+1') {
-      setAmount(prev => (prev += 1));
-      setCart(cartContent => {
-        return [...cartContent].map(
-          d => d.name === dish.name && { ...d, amount: ++d.amount }
-        );
-      });
-      return;
-    }
-
-    setAmount(prev => (prev -= 1));
-    setCart(cartContent => {
-      return [...cartContent].map(
-        d => d.name === dish.name && { ...d, amount: --d.amount }
-      );
-    });
-
-    // if (e.target.innerHTML === '+1') {
-    //   setTotal(prevTotal => (prevTotal += price));
-    //   setAmount(prev => (prev += 1));
-    //   return;
-    // }
-    // setTotal(prevTotal => (prevTotal -= price));
-    // setAmount(prev => (prev -= 1));
-  };
+  const { setCart } = useMyContext();
+  const [amount, setAmount] = useReducer(amountReducer, dish.amount);
 
   return (
     <>
@@ -50,13 +17,34 @@ const DishCardInCart = ({ dish, setTotal, setCart, cart }) => {
         <span>Price: {price}UAH</span>
         <span>Quantity:{amount}</span>
 
-        <button type="button" onClick={amountChangehandle}>
+        <button
+          type="button"
+          onClick={() => {
+            setCart({ type: 'increment', payload: dish });
+
+            setAmount({ type: 'increment' });
+          }}
+        >
           +1
         </button>
-        <button type="button" onClick={amountChangehandle}>
+        <button
+          type="button"
+          onClick={() => {
+            dish.amount > 2
+              ? setCart({ type: 'remove', payload: dish })
+              : setCart({ type: 'decrement', payload: dish });
+
+            setAmount({
+              type: 'decrement',
+            });
+          }}
+        >
           -1
         </button>
-        <button type="button" onClick={removeDishFromCartHandle}>
+        <button
+          type="button"
+          onClick={() => setCart({ type: 'remove', payload: dish })}
+        >
           Remove
         </button>
       </div>

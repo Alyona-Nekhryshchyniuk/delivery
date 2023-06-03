@@ -1,7 +1,9 @@
 import DishCardInCart from '../DishCardInCart/DishCardInCart';
 import { useEffect, useState } from 'react';
+import useMyContext from '../../helpers/useMyContext';
 
-const Cart = ({ cart, setCart }) => {
+const Cart = () => {
+  const { cart, setCart } = useMyContext();
   // const [total, setTotal] = useState(() => {
   //   let fullPrice = 0;
   //   cart.forEach(dishObj => (fullPrice += +dishObj.price));
@@ -27,13 +29,7 @@ const Cart = ({ cart, setCart }) => {
       <section>
         <ul>
           {cart.map(dish => (
-            <DishCardInCart
-              key={dish._id}
-              dish={dish}
-              // setTotal={setTotal}
-              setCart={setCart}
-              cart={cart}
-            />
+            <DishCardInCart key={dish._id} dish={dish} />
           ))}
         </ul>
       </section>

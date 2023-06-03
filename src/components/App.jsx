@@ -1,20 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
-import { useState, lazy } from 'react';
+import { useState, lazy, useContext, useEffect } from 'react';
 import SharedLayout from './SharedLayout';
 import ShopPage from 'pages/ShopPage';
-import ShoppingCartPage from 'pages/ShoppingCartPage';
-
-// const ShoppingCartPage = lazy(() => {
-//   import('../pages/ShoppingCartPage');
-// });
+import CartContext from './CartContext/CartContext';
+import { createdContext } from '../components/CartContext/CartContext';
+const ShoppingCartPage = lazy(() => import('pages/ShoppingCartPage'));
 
 export const App = () => {
-  const [cart, setCart] = useState([]);
-  const [total, setTotal] = useState();
-
   return (
     <div>
       <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<ShopPage />} />
+          <Route path="cart" element={<ShoppingCartPage />} />
+        </Route>
+      </Routes>
+      {/* <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<ShopPage cart={cart} setCart={setCart} />} />
           <Route
@@ -22,7 +23,7 @@ export const App = () => {
             element={<ShoppingCartPage setCart={setCart} cart={cart} />}
           />
         </Route>
-      </Routes>
+      </Routes> */}
     </div>
   );
 };

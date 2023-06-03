@@ -16,11 +16,12 @@ const SharedLayout = () => {
             </li>
           </ul>
         </nav>
+        <div style={{ fontSize: 40 }}> 🍽️ </div>
       </header>
       <main>
-        {/* <Suspense fallback={<div>"Loading ..."</div>}> */}
-        <Outlet />
-        {/* </Suspense> */}
+        <Suspense fallback={<div>"Loading ..."</div>}>
+          <Outlet />
+        </Suspense>
       </main>
     </>
   );
