@@ -8,22 +8,13 @@ const ShoppingCartPage = lazy(() => import('pages/ShoppingCartPage'));
 
 export const App = () => {
   return (
-    <div>
+    <div className="appContainer">
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<ShopPage />} />
           <Route path="cart" element={<ShoppingCartPage />} />
         </Route>
       </Routes>
-      {/* <Routes>
-        <Route path="/" element={<SharedLayout />}>
-          <Route index element={<ShopPage cart={cart} setCart={setCart} />} />
-          <Route
-            path="cart"
-            element={<ShoppingCartPage setCart={setCart} cart={cart} />}
-          />
-        </Route>
-      </Routes> */}
     </div>
   );
 };

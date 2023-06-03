@@ -1,4 +1,5 @@
 import RadioInputs from '../RadioInputs/RadioInputs';
+import css from './sideBar.module.scss';
 
 const SideBar = ({ setChosenShop, chosenShop }) => {
   const shopNames = [
@@ -11,9 +12,8 @@ const SideBar = ({ setChosenShop, chosenShop }) => {
   ];
 
   return (
-    <aside>
-      <h2>Shops</h2>
-      <ul>
+    <aside className={css.sidebar}>
+      <ul >
         {shopNames.map(name => (
           <RadioInputs
             key={name}

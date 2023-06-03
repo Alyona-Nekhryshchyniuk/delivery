@@ -1,0 +1,13 @@
+.radioInput {
+  opacity: 0.3;
+  padding: 0;
+  margin: 0;
+}
+
+.radioItem:not(:last-child) {
+  margin-bottom: 15px;
+}
+
+.radioLabel:has(> input:checked) {
+  color: rgb(74, 145, 202);
+}

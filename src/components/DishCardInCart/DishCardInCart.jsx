@@ -1,6 +1,8 @@
 import { useReducer } from 'react';
 import useMyContext from '../../helpers/useMyContext';
 import { amountReducer } from '../../helpers/amountReducer';
+import Buttons from '../Buttons/Buttons';
+import css from '../DishCard/dishCard.module.scss';
 
 const DishCardInCart = ({ dish }) => {
   const { dishName, type, imageURL, price } = dish;
@@ -12,41 +14,16 @@ const DishCardInCart = ({ dish }) => {
     <>
       <div>
         <img src={imageURL} />
-        <h3>{dishName}</h3>
-        <span>Type: {type}</span>
-        <span>Price: {price}UAH</span>
+        <h3 className={css.dishName}>{dishName}</h3>
+        <p className={css.dishType}>Type: {type}</p>
+        <p className={css.price}>Price: {price}UAH</p>
         <span>Quantity:{amount}</span>
-
-        <button
-          type="button"
-          onClick={() => {
-            setCart({ type: 'increment', payload: dish });
-
-            setAmount({ type: 'increment' });
-          }}
-        >
-          +1
-        </button>
-        <button
-          type="button"
-          onClick={() => {
-            dish.amount > 2
-              ? setCart({ type: 'remove', payload: dish })
-              : setCart({ type: 'decrement', payload: dish });
-
-            setAmount({
-              type: 'decrement',
-            });
-          }}
-        >
-          -1
-        </button>
-        <button
-          type="button"
-          onClick={() => setCart({ type: 'remove', payload: dish })}
-        >
-          Remove
-        </button>
+        <Buttons
+          setCart={setCart}
+          setAmount={setAmount}
+          amount={amount}
+          dish={dish}
+        />
       </div>
     </>
   );

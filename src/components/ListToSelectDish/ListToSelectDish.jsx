@@ -1,9 +1,7 @@
 import DishCard from '../DishCard/DishCard';
 import { useEffect, useState } from 'react';
+import css from './listToSelectDish.module.scss';
 const basicURL = 'http://localhost:3001/';
-
-
-
 
 const ListToSelectDish = ({ chosenShop }) => {
   const [dishes, setDishes] = useState([]);
@@ -18,16 +16,15 @@ const ListToSelectDish = ({ chosenShop }) => {
 
   return (
     <section>
-      <ul>
+      <ul className={css.cardList}>
         {dishes.map(dish => (
-          <DishCard key={dish._id}  dish={dish} />
+          <DishCard key={dish._id} dish={dish} />
         ))}
       </ul>
     </section>
   );
 };
 export default ListToSelectDish;
-
 
 // const ListToSelectDish = ({ chosenShop, setCart, cart }) => {
 //   const [dishes, setDishes] = useState([]);

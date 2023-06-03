@@ -1,0 +1,45 @@
+.contentContainer {
+  display: flex;
+}
+
+.headerContainer {
+  display: flex;
+  padding: 20px 0px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navList {
+  font-size: 23px;
+  display: flex;
+}
+
+.navList > li:first-child {
+  margin-right: 25px;
+}
+.navLink {
+  text-decoration: none;
+  color: rgb(35, 68, 134);
+}
+
+.navLink.active {
+  color: rgb(12, 111, 204);
+  text-decoration: overline;
+}
+
+.cartAmountContainer {
+  position: relative;
+}
+
+.cartAmount {
+  font-size: 25px;
+  position: absolute;
+  z-index: 3;
+  top: 45px;
+  left: 12px;
+  margin: 0;
+  display: block;
+  padding: 1px 7px;
+  border-radius: 50%;
+  background-color: #f88484;
+}

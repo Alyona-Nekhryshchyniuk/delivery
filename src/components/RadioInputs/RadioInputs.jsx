@@ -1,3 +1,5 @@
+import css from './radioInputs.module.scss';
+
 const RadioInputs = ({ name, chosenShop, setChosenShop }) => {
   const defineLabel = () => {
     switch (name) {
@@ -19,10 +21,11 @@ const RadioInputs = ({ name, chosenShop, setChosenShop }) => {
   };
 
   return (
-    <li>
-      <label>
+    <li className={css.radioItem}>
+      <label className={css.radioLabel}>
         {defineLabel()}
         <input
+          className={css.radioInput}
           type="radio"
           name={name}
           checked={name === chosenShop}

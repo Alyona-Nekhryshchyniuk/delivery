@@ -1,0 +1,25 @@
+.dishCardContainer {
+  box-sizing: border-box;
+  flex-basis: calc((100% - 20px) / 2);
+  font-size: 16px;
+  border: 0.5px solid rgb(245, 241, 241);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.dishCardContainer:hover {
+  border: 1px solid rgb(204, 194, 194);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.price {
+  color: rgb(233, 31, 31);
+}
+
+.dishName {
+  color: rgb(68, 6, 6);
+  text-shadow: 3px -1px 1px rgba(207, 197, 210, 0.51);
+  text-shadow: 1;
+}

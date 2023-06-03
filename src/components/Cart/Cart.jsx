@@ -1,6 +1,7 @@
 import DishCardInCart from '../DishCardInCart/DishCardInCart';
 import { useEffect, useState } from 'react';
 import useMyContext from '../../helpers/useMyContext';
+import css from '../ListToSelectDish/listToSelectDish.module.scss';
 
 const Cart = () => {
   const { cart, setCart } = useMyContext();
@@ -27,7 +28,7 @@ const Cart = () => {
   return (
     <>
       <section>
-        <ul>
+        <ul className={css.cardList}>
           {cart.map(dish => (
             <DishCardInCart key={dish._id} dish={dish} />
           ))}
