@@ -19,11 +19,14 @@
 }
 .navLink {
   text-decoration: none;
-  color: rgb(35, 68, 134);
+  color: rgb(68, 6, 6);
+  // color: rgb(35, 68, 134);
 }
 
 .navLink.active {
-  color: rgb(12, 111, 204);
+  // color: rgb(12, 111, 204);
+  color: rgb(68, 6, 6);
+  text-shadow: 3px -1px 1px rgba(207, 197, 210, 0.51);
   text-decoration: overline;
 }
 

@@ -2,7 +2,9 @@ import { useEffect, useReducer } from 'react';
 import useMyContext from '../../helpers/useMyContext';
 import { amountReducer } from '../../helpers/amountReducer';
 import Buttons from 'components/Buttons/Buttons';
-import css from './dishCard.module.scss';
+import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import seperateCss from './dishCard.module.scss';
+import css from '../card.module.scss';
 
 const DishCard = ({ dish }) => {
   const { imageURL, dishName, type, price } = dish;
@@ -15,23 +17,30 @@ const DishCard = ({ dish }) => {
   }, []);
 
   return (
-    <div className={css.dishCardContainer}>
-      <img src={imageURL} />
+    <div className={seperateCss.dishCardContainer}>
+      <div className={seperateCss.imgContainer}>
+        {' '}
+        <img src={imageURL} className={css.img} />
+      </div>
       <h3 className={css.dishName}>{dishName}</h3>
-      <p className={css.dishType}>Type: {type}</p>
-      <p className={css.price}>Price: {price}UAH</p>
+      <p>Type: {type}</p>
+      <p>
+        Price: <span className={css.highlighted}>{price}UAH</span>
+      </p>
+
       {!cart.some(d => d.dishName === dish.dishName) ? (
-        <button
+        <AddToCartButton
+          text="Add to cart"
           onClick={() => {
             setCart({ type: 'first increment', payload: dish });
             setAmount({ type: 'increment' });
           }}
-        >
-          Add to cart
-        </button>
+        />
       ) : (
         <>
-          <p>Quantity:{amount}</p>
+          <p>
+            Quantity: <span className={css.highlighted}>{amount}</span>
+          </p>
           <Buttons
             setCart={setCart}
             setAmount={setAmount}

@@ -25,26 +25,3 @@ const ListToSelectDish = ({ chosenShop }) => {
   );
 };
 export default ListToSelectDish;
-
-// const ListToSelectDish = ({ chosenShop, setCart, cart }) => {
-//   const [dishes, setDishes] = useState([]);
-
-//   useEffect(() => {
-//     (async () => {
-//       const response = await fetch(`${basicURL}api/${chosenShop}`);
-//       const { dishes } = await response.json();
-//       setDishes(dishes);
-//     })();
-//   }, [chosenShop]);
-
-//   return (
-//     <section>
-//       <ul>
-//         {dishes.map(dish => (
-//           <DishCard key={dish._id} cart={cart} setCart={setCart} dish={dish} />
-//         ))}
-//       </ul>
-//     </section>
-//   );
-// };
-// export default ListToSelectDish;

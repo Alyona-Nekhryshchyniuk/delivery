@@ -1,7 +1,10 @@
 import { Formik, Form, ErrorMessage, Field } from 'formik';
 import { object, string } from 'yup';
 import css from './userForm.module.scss';
-import SimpleMap from '../GoogleMap/SimpleMap';
+import Map from '../map/Map';
+import { useEffect, useRef, useState } from 'react';
+
+// import SimpleMap from '../GoogleMap/SimpleMap';
 
 let userSchema = object({
   name: string().required('Field is reqiuired'),
@@ -10,7 +13,7 @@ let userSchema = object({
     .required('Field is reqiuired')
     .min(5, 'Must be at least 5 characters long')
     .max(12, 'Must be no more than 12 characters long'),
-  address: string().required('Field is reqiuired'),
+  address: string().required('Input correct destination address'),
 });
 
 const submitHandle = (values, actions) => {
@@ -22,6 +25,16 @@ const submitHandle = (values, actions) => {
 const initValues = { name: '', email: '', phone: '', address: '' };
 
 const UserForm = () => {
+  const [destinationValue, setDestinationValue] = useState('');
+
+  /** @type React.MutableRefObject<HTMLInputElement> */
+  // const destiantionRef = useRef();
+
+  // const destinationValueClear = () => {
+  //   setDestinationValue = '';
+  //   return;
+  // };
+
   return (
     <>
       <Formik
@@ -80,6 +93,12 @@ const UserForm = () => {
                 name="address"
                 type="text"
                 placeholder="Type your address"
+                // ref={destiantionRef}
+                autoComplete="true"
+                onChange={e => {
+                  setDestinationValue(e.target.value);
+                }}
+                value={destinationValue}
               />
               <ErrorMessage
                 name="address"
@@ -87,7 +106,11 @@ const UserForm = () => {
                 className={css.errorMessage}
               />
             </label>
-            <button type="submit">Submit</button>
+            {/* <Map
+              destinationValue={destinationValue}
+              destinationValueClear={setDestinationValue}
+            /> */}
+            {/* <button type="submit">Submit</button> */}
             {/* <SimpleMap /> */}
           </Form>
         )}

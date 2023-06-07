@@ -1,5 +1,5 @@
 .radioInput {
-  opacity: 0.3;
+  opacity: 0;
   padding: 0;
   margin: 0;
 }
@@ -9,5 +9,7 @@
 }
 
 .radioLabel:has(> input:checked) {
-  color: rgb(74, 145, 202);
+  // color: rgb(74, 145, 202);
+  color: rgb(68, 6, 6);
+  text-shadow: 3px -1px 1px rgba(207, 197, 210, 0.51);
 }

@@ -1,0 +1,57 @@
+.shoppingCartPageContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.form {
+  // width: 550px;
+  flex-basis: 50%;
+  flex-wrap: wrap;
+  display: flex;
+  align-self: flex-start;
+  // flex-direction: column;
+  // align-items: flex-start;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 15px;
+  font-size: 15px;
+  font-weight: 600;
+}
+label:nth-child(2n + 1) {
+  margin-right: 20px;
+}
+
+.input {
+  width: 235px;
+  font-size: 15px;
+  margin-top: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.popupBubble {
+  background-color: #ff7772;
+  border-radius: 7px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  padding: 5px;
+  text-align: center;
+  position: absolute;
+  min-width: 180px;
+  // top: -100px;
+  // left: 0px;
+  top: 4px;
+  left: 8px;
+  font-size: 13px;
+  z-index: -1000;
+  opacity: 1;
+}
+
+.marker {
+  position: relative;
+  font-size: 23px;
+}
