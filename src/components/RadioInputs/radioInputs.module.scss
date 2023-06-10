@@ -1,3 +1,7 @@
+.radioItem {
+  // display: block;
+  // width: 100%;
+}
 .radioInput {
   opacity: 0;
   padding: 0;
@@ -9,7 +13,11 @@
 }
 
 .radioLabel:has(> input:checked) {
-  // color: rgb(74, 145, 202);
+  width: auto;
   color: rgb(68, 6, 6);
   text-shadow: 3px -1px 1px rgba(207, 197, 210, 0.51);
+}
+
+.radioLabel:has(> input:disabled) {
+  color: rgb(189, 180, 180);
 }

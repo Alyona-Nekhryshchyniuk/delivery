@@ -7,11 +7,14 @@ import style from '../shared.module.scss';
 
 const SharedLayout = () => {
   const { cart } = useMyContext();
-
   const isActiveHandle = ({ isActive }) => {
     return isActive ? `${css.navLink} ${css.active}` : css.navLink;
   };
-
+  const orderedDishesQuantity = () => {
+    return cart.reduce((prev, el) => {
+      return prev + el.amount;
+    }, 0);
+  };
   return (
     <div>
       <header>
@@ -32,7 +35,7 @@ const SharedLayout = () => {
           </nav>
           <div className={css.cartAmountContainer} style={{ fontSize: 55 }}>
             {' '}
-            🍽️ <span className={css.cartAmount}>{cart.length}</span>
+            🍽️ <span className={css.cartAmount}>{orderedDishesQuantity()}</span>
           </div>
         </div>
       </header>

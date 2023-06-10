@@ -2,17 +2,19 @@ import { useEffect, useReducer } from 'react';
 import useMyContext from '../../helpers/useMyContext';
 import { amountReducer } from '../../helpers/amountReducer';
 import Buttons from 'components/Buttons/Buttons';
-import AddToCartButton from '../AddToCartButton/AddToCartButton';
+import AddToCartButton from '../Buttons/AddToCartButton/AddToCartButton';
 import seperateCss from './dishCard.module.scss';
 import css from '../card.module.scss';
 
 const DishCard = ({ dish }) => {
-  const { imageURL, dishName, type, price } = dish;
-
   const { cart, setCart } = useMyContext();
   const [amount, setAmount] = useReducer(amountReducer);
 
+  const { imageURL, dishName, type, price } = dish;
+
   useEffect(() => {
+    // let storedCart = JSON.parse(localStorage.getItem('cart'));
+    // setCart(storedCart);
     setAmount({ type: 'mount', payload: { cart, dish } });
   }, []);
 
@@ -23,32 +25,36 @@ const DishCard = ({ dish }) => {
         <img src={imageURL} className={css.img} />
       </div>
       <h3 className={css.dishName}>{dishName}</h3>
-      <p>Type: {type}</p>
-      <p>
-        Price: <span className={css.highlighted}>{price}UAH</span>
-      </p>
+      <div className={css.cardTextContainer}>
+        <p>
+          Type: <span className={css.highlighted}>{type}</span>
+        </p>
+        <p>
+          Price: <span className={css.highlighted}>{price} UAH</span>
+        </p>
 
-      {!cart.some(d => d.dishName === dish.dishName) ? (
-        <AddToCartButton
-          text="Add to cart"
-          onClick={() => {
-            setCart({ type: 'first increment', payload: dish });
-            setAmount({ type: 'increment' });
-          }}
-        />
-      ) : (
-        <>
-          <p>
-            Quantity: <span className={css.highlighted}>{amount}</span>
-          </p>
-          <Buttons
-            setCart={setCart}
-            setAmount={setAmount}
-            amount={amount}
-            dish={dish}
+        {!cart.some(d => d.dishName === dish.dishName) ? (
+          <AddToCartButton
+            text="Add to cart"
+            onClick={() => {
+              setCart({ type: 'first increment', payload: dish });
+              setAmount({ type: 'increment' });
+            }}
           />
-        </>
-      )}
+        ) : (
+          <>
+            <p>
+              Quantity: <span className={css.highlighted}>{amount}</span>
+            </p>
+            <Buttons
+              setCart={setCart}
+              setAmount={setAmount}
+              amount={amount}
+              dish={dish}
+            />
+          </>
+        )}
+      </div>
     </div>
   );
 };

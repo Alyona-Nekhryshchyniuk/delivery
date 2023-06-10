@@ -4,7 +4,14 @@ import css from './userForm.module.scss';
 import Map from '../map/Map';
 import { useEffect, useRef, useState } from 'react';
 
-// import SimpleMap from '../GoogleMap/SimpleMap';
+import {
+  useJsApiLoader,
+  GoogleMap,
+  Marker,
+  Autocomplete,
+  DirectionsRenderer,
+  OverlayView,
+} from '@react-google-maps/api';
 
 let userSchema = object({
   name: string().required('Field is reqiuired'),
@@ -13,7 +20,8 @@ let userSchema = object({
     .required('Field is reqiuired')
     .min(5, 'Must be at least 5 characters long')
     .max(12, 'Must be no more than 12 characters long'),
-  address: string().required('Input correct destination address'),
+  address: string(),
+  // .required('Input correct destination address'),
 });
 
 const submitHandle = (values, actions) => {
@@ -23,9 +31,21 @@ const submitHandle = (values, actions) => {
 };
 
 const initValues = { name: '', email: '', phone: '', address: '' };
+const librariesToEnable = ['places'];
 
-const UserForm = () => {
+const UserForm = ({ chosenShop }) => {
   const [destinationValue, setDestinationValue] = useState('');
+
+  const { google_maps_api_key } = process.env;
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: google_maps_api_key,
+
+    libraries: librariesToEnable,
+  });
+
+  if (!isLoaded) {
+    return <p>Google map is loading ...</p>;
+  }
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   // const destiantionRef = useRef();
@@ -88,28 +108,32 @@ const UserForm = () => {
             </label>
             <label className={css.label}>
               Address
-              <Field
-                className={css.input}
-                name="address"
-                type="text"
-                placeholder="Type your address"
-                // ref={destiantionRef}
-                autoComplete="true"
-                onChange={e => {
-                  setDestinationValue(e.target.value);
-                }}
-                value={destinationValue}
-              />
+              <Autocomplete>
+                <Field
+                  className={css.input}
+                  name="address"
+                  type="text"
+                  placeholder="Type your address"
+                  // ref={destiantionRef}
+                  autoComplete="true"
+                  onChange={e => {
+                    setDestinationValue(e.target.value);
+                  }}
+                  value={destinationValue}
+                />
+              </Autocomplete>
               <ErrorMessage
                 name="address"
                 component="div"
                 className={css.errorMessage}
               />
             </label>
-            {/* <Map
+            <Map
+              chosenShop={chosenShop}
               destinationValue={destinationValue}
               destinationValueClear={setDestinationValue}
-            /> */}
+              isLoaded={isLoaded}
+            />
             {/* <button type="submit">Submit</button> */}
             {/* <SimpleMap /> */}
           </Form>

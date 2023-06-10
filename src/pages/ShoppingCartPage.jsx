@@ -6,13 +6,13 @@ import { ChakraProvider, theme } from '@chakra-ui/react';
 
 import useMyContext from '../helpers/useMyContext';
 
-const ShoppingCartPage = () => {
+const ShoppingCartPage = ({ chosenShop }) => {
   const { cart } = useMyContext();
 
   return (
     <div className={css.shoppingCartPageContainer}>
       <ChakraProvider theme={theme}>
-        <UserForm />
+        {cart.length ? <UserForm chosenShop={chosenShop} /> : <></>}
       </ChakraProvider>
       {cart.length ? <Cart /> : <EmptyCart />}
     </div>

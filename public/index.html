@@ -13,6 +13,59 @@
 
     <title>Delivery App</title>
 
+    <!--       
+
+      function drops(parent, quantity, minAngle, maxAngle) {
+        for (let i = quantity - 1; i >= 0; i--) {
+          let angle = gsap.utils.random(minAngle, maxAngle),
+            velocity = gsap.utils.random(60, 80);
+
+          let div = document.createElement('div');
+          div.classList.add('drop');
+
+          parent.appendChild(div);
+
+          set(div, {
+            opacity: 1,
+            scale: 0,
+          });
+          timeline({
+            onComplete() {
+              div.remove();
+            },
+          })
+            .to(
+              div,
+              {
+                duration: 0.4,
+                scale: gsap.utils.random(0.5, 0.7),
+              },
+              0
+            )
+            .to(
+              div,
+              {
+                duration: 1,
+                physics2D: {
+                  angle: angle,
+                  velocity: velocity,
+                  gravity: 80,
+                },
+              },
+              0
+            )
+            .to(
+              div,
+              {
+                duration: 0.3,
+                opacity: 0,
+              },
+              0.3
+            );
+        }
+      }
+    </script> -->
+
     <!-- Start Single Page Apps for GitHub Pages -->
     <script type="text/javascript">
       // Single Page Apps for GitHub Pages
@@ -42,11 +95,12 @@
         }
       })(window.location);
     </script>
+
     <!-- End Single Page Apps for GitHub Pages -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <div id="root" style="background-color: cornsilk"></div>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

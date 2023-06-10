@@ -16,25 +16,25 @@ const DishCardInCart = ({ dish }) => {
       <div className={sepCss.imgContainer}>
         {' '}
         <img src={imageURL} className={css.img} />
-      </div>
+      </div>{' '}
+      <h3 className={css.dishName}>{dishName}</h3>
       <div className={css.cardTextContainer}>
-        {' '}
-        <h3 className={css.dishName}>{dishName}</h3>
-        <p>Type: {type}</p>
         <p>
-          Price: <span className={css.highlighted}>{price}UAH</span>
+          Type: <span className={css.highlighted}>{type}</span>
+        </p>
+        <p>
+          Price: <span className={css.highlighted}>{price} UAH</span>
         </p>
         <p>
           Quantity: <span className={css.highlighted}>{amount}</span>
         </p>
+        <Buttons
+          setCart={setCart}
+          setAmount={setAmount}
+          amount={amount}
+          dish={dish}
+        />
       </div>
-
-      <Buttons
-        setCart={setCart}
-        setAmount={setAmount}
-        amount={amount}
-        dish={dish}
-      />
     </div>
   );
 };

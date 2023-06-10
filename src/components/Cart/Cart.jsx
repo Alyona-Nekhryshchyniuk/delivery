@@ -2,6 +2,7 @@ import DishCardInCart from '../DishCardInCart/DishCardInCart';
 import { useEffect, useState } from 'react';
 import useMyContext from '../../helpers/useMyContext';
 import css from './cart.module.scss';
+import style from '../Buttons/buttons.module.scss';
 
 const Cart = () => {
   const { cart, setCart } = useMyContext();
@@ -34,8 +35,11 @@ const Cart = () => {
           ))}
         </ul>
       </section>
-      <div> Total prize: {total}</div>
-      <button type="Submit" onClick={submitHandle}>
+      <p className={css.totalPrize}>
+        Total prize: <span className={css.highlighted}>{total} UAH</span>
+      </p>
+
+      <button type="Submit" onClick={submitHandle} className={style.submitBtn}>
         {' '}
         Submit
       </button>

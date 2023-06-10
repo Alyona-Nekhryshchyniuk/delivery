@@ -4,7 +4,10 @@ import { cartReducer } from '../../helpers/cartReducer';
 const context = createContext();
 
 const CartContext = ({ children }) => {
-  const [cart, setCart] = useReducer(cartReducer, []);
+  let stored = localStorage.getItem('cart');
+  const initCart = stored ? JSON.parse(stored) : [];
+
+  const [cart, setCart] = useReducer(cartReducer, initCart);
 
   return (
     <context.Provider value={{ cart, setCart }}>{children}</context.Provider>

@@ -1,0 +1,46 @@
+.btnsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+button {
+  font-weight: 700;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  color: rgb(68, 6, 6);
+  background-color: #f0f0f0;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+button:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  cursor: pointer;
+}
+
+.increment,
+.decrement {
+  margin-right: 10px;
+}
+
+button.removeBtn {
+  color: rgb(155, 121, 121);
+  font-weight: 600;
+}
+
+.submitBtn {
+  padding: 9px 15px;
+  margin-top: 15px;
+  color: #f0f0f0;
+  background-color: rgb(136, 106, 106);
+  margin-left: calc(100% - 88.75px);
+}
+
+button.submitbtn:hover {
+  margin-left: calc(100% - 88.75px);
+}

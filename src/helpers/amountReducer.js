@@ -12,6 +12,9 @@ export const amountReducer = (prev, action) => {
     case 'decrement':
       return (prev -= 1);
 
+    case 'remove':
+      return 0;
+
     default:
       return;
   }

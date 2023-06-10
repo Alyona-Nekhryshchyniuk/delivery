@@ -24,6 +24,7 @@
   height: 100%;
   border-radius: 5px;
   object-fit: cover;
+  object-position: center;
 }
 
 .dishName {
@@ -39,5 +40,5 @@
 }
 .highlighted {
   font-weight: bold;
-  color: rgb(233, 31, 31);
+  color: rgb(68, 6, 6);
 }

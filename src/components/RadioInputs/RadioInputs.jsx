@@ -1,6 +1,8 @@
 import css from './radioInputs.module.scss';
-
+import useMyContext from '../../helpers/useMyContext';
 const RadioInputs = ({ name, chosenShop, setChosenShop }) => {
+  const { cart } = useMyContext();
+
   const defineLabel = () => {
     switch (name) {
       case 'yaposhka':
@@ -29,6 +31,7 @@ const RadioInputs = ({ name, chosenShop, setChosenShop }) => {
           type="radio"
           name={name}
           checked={name === chosenShop}
+          disabled={cart.length && chosenShop !== name}
           onChange={e => setChosenShop(e.target.name)}
         />
       </label>

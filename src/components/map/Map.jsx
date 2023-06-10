@@ -22,15 +22,20 @@ import {
 } from '@react-google-maps/api';
 import { useRef, useState } from 'react';
 
-let { center, address, name } = defineDestination();
-const librariesToEnable = ['places'];
+// const librariesToEnable = ['places'];
 
-function Map({ destinationValue, destinationValueClear }) {
-  const { isLoaded } = useJsApiLoader({
-    // googleMapsApiKey: process.env.google_maps_api_key,
-    googleMapsApiKey: ,
-    libraries: librariesToEnable,
-  });
+function Map({
+  destinationValue,
+  destinationValueClear,
+  chosenShop,
+  isLoaded,
+}) {
+  let { center, address, name } = defineDestination(chosenShop);
+  // const { isLoaded } = useJsApiLoader({
+  //   // googleMapsApiKey: process.env.google_maps_api_key,
+  //   googleMapsApiKey: 'AIzaSyCu5fHLU8xwV8qrXFtXiNK9g3_tZ9UHXT8',
+  //   libraries: librariesToEnable,
+  // });
 
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
@@ -120,13 +125,6 @@ function Map({ destinationValue, destinationValueClear }) {
                   <p>{address}</p>{' '}
                 </div>
               </div>
-              {/* <button onClick={this.onClick} style={{ height: 60 }}>
-                I have been clicked {this.state.count} time
-                {this.state.count > 1 ? `s` : ``}
-              </button> */}{' '}
-              {/* <div className={css.popupBubbleAnchor} style={{ fontSize: 25 }}>
-                // 📍
-              </div> */}
             </div>
           </OverlayView>
           <Marker position={center} />
@@ -141,7 +139,7 @@ function Map({ destinationValue, destinationValueClear }) {
         m={3}
         bgColor="white"
         shadow="base"
-        maxW="90%"
+        maxW="75%"
         // h="45px"
 
         // minW="container.md"
@@ -149,26 +147,12 @@ function Map({ destinationValue, destinationValueClear }) {
         fontSize="14px"
       >
         <HStack spacing={1} justifyContent="space-evenly">
-          {/* <Box flexGrow={1}>
-            <Autocomplete>
-              <Input type="text" placeholder="Origin" />
-            </Autocomplete>
-          </Box>
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input
-                type="text"
-                placeholder="Destination"
-                // ref={destiantionRef}
-              />
-            </Autocomplete>
-          </Box> */}
-          {/* <ButtonGroup> */}
           <Button
             h="30px"
-            colorScheme="pink"
+            colorScheme="rgb(136, 106, 106);"
             type="submit"
             onClick={calculateRoute}
+            backgroundColor="rgb(136, 106, 106);"
           >
             Calculate Route
           </Button>

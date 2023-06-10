@@ -1,6 +1,8 @@
 .shoppingCartPageContainer {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
+  height: 100vh;
 }
 
 .form {
@@ -29,13 +31,13 @@ label:nth-child(2n + 1) {
   width: 235px;
   font-size: 15px;
   margin-top: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(136, 106, 106);
   border-radius: 3px;
   padding: 3px;
 }
 
 .popupBubble {
-  background-color: #ff7772;
+  background-color: rgba(207, 197, 210);
   border-radius: 7px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 5px;

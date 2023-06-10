@@ -1,9 +1,9 @@
-export const defineDestination = () => {
+export const defineDestination = chosenShop => {
   let center;
   let address;
   let name;
 
-  let chosenShop = 'pepperpoint';
+  // let chosenShop = 'pepperpoint';
   const coordinades = {
     yaposhka: { lat: 46.398950646372334, lng: 30.732959453049933 },
     vilkipalki: { lat: 46.47503810793727, lng: 30.71305404937496 },
