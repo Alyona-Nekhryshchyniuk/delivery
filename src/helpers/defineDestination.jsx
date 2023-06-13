@@ -6,7 +6,7 @@ export const defineDestination = chosenShop => {
   // let chosenShop = 'pepperpoint';
   const coordinades = {
     yaposhka: { lat: 46.398950646372334, lng: 30.732959453049933 },
-    vilkipalki: { lat: 46.47503810793727, lng: 30.71305404937496 },
+    vilkipalki: { lat: 46.47171105714595, lng: 30.74066311256781 },
     pepperpoint: { lat: 46.41186191248775, lng: 30.712226626646803 },
     kfs: { lat: 46.485043244598266, lng: 30.73751228540019 },
     burgerking: { lat: 46.47879697294342, lng: 30.76553110029899 },
@@ -21,7 +21,7 @@ export const defineDestination = chosenShop => {
       break;
     case 'vilkipalki':
       center = coordinades.vilkipalki;
-      address = 'вул. Розумовська, Одеса';
+      address = 'вул. Пушкінська, 66, Одеса';
       name = 'Vilki Palki';
       break;
     case 'pepperpoint':

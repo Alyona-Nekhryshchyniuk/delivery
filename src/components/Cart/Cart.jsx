@@ -4,7 +4,7 @@ import useMyContext from '../../helpers/useMyContext';
 import css from './cart.module.scss';
 import style from '../Buttons/buttons.module.scss';
 
-const Cart = () => {
+const Cart = ({ setDeliveryCost, showDeliveryCost }) => {
   const { cart, setCart } = useMyContext();
   // const [total, setTotal] = useState(() => {
   //   let fullPrice = 0;
@@ -22,12 +22,17 @@ const Cart = () => {
     });
   }, [cart]);
 
-  const submitHandle = e => {
-    console.log(cart);
+  // const submitHandle = e => {
+  //   console.log(cart);
+  // };
+
+  const deliveryClickHandle = () => {
+    console.log(showDeliveryCost);
+    setDeliveryCost(!showDeliveryCost);
   };
 
   return (
-    <div className={css.cartPageContent}>
+    <div>
       <section>
         <ul className={css.cardList}>
           {cart.map(dish => (
@@ -35,14 +40,33 @@ const Cart = () => {
           ))}
         </ul>
       </section>
-      <p className={css.totalPrize}>
-        Total prize: <span className={css.highlighted}>{total} UAH</span>
-      </p>
-
+      <div className={css.totalPrize}>
+        <button
+          type="button"
+          className={style.deliveryCostBtn}
+          onClick={deliveryClickHandle}
+        >
+          What's delivery cost ?
+        </button>
+        {showDeliveryCost && (
+          <div className={css.deliveryInfo}>
+            <span className={css.closeDeliveryColor}>free</span>
+            <span className={css.midDeliveryColor}>30 UAH</span>
+            <span className={css.farDeliveryColor}>60 UAH</span>
+            <span className={css.dekiveryAsterisk}>
+              * Has not yet been included into total prize
+            </span>
+          </div>
+        )}
+        <span>
+          Total prize: <span className={css.highlighted}>{total} UAH</span>
+        </span>
+      </div>
+      {/* 
       <button type="Submit" onClick={submitHandle} className={style.submitBtn}>
         {' '}
         Submit
-      </button>
+      </button> */}
     </div>
   );
 };

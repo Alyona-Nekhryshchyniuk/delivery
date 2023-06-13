@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   ButtonGroup,
+  Center,
   Flex,
   HStack,
   IconButton,
@@ -11,7 +12,8 @@ import {
 } from '@chakra-ui/react';
 import { FaLocationArrow, FaTimes } from 'react-icons/fa';
 import { defineDestination } from '../../helpers/defineDestination';
-
+import { getCircleStyles } from '../../helpers/getCircleStyles';
+import { Loader } from '../Shared/Loader';
 import {
   useJsApiLoader,
   GoogleMap,
@@ -19,18 +21,26 @@ import {
   Autocomplete,
   DirectionsRenderer,
   OverlayView,
+  Circle,
 } from '@react-google-maps/api';
-import { useRef, useState } from 'react';
+import { useRef, useState, useMemo } from 'react';
 
 // const librariesToEnable = ['places'];
 
-function Map({
-  destinationValue,
-  destinationValueClear,
+const Map = ({
+  setDestinationValue,
   chosenShop,
   isLoaded,
-}) {
-  let { center, address, name } = defineDestination(chosenShop);
+  destinationValue,
+  showDeliveryCost,
+}) => {
+  let { center, address, name } = useMemo(
+    () => defineDestination(chosenShop),
+    []
+  );
+
+  let { closeOpt, farOpt, farthestOpt } = useMemo(() => getCircleStyles(), []);
+  // let { closeOpt, farOpt, farthestOpt } = getCircleStyles();
   // const { isLoaded } = useJsApiLoader({
   //   // googleMapsApiKey: process.env.google_maps_api_key,
   //   googleMapsApiKey: 'AIzaSyCu5fHLU8xwV8qrXFtXiNK9g3_tZ9UHXT8',
@@ -45,10 +55,10 @@ function Map({
   /** @type React.MutableRefObject<HTMLInputElement> */
   // const originRef = useRef();
   // /** @type React.MutableRefObject<HTMLInputElement> */
-  // const destiantionRef = useRef();
+  const [showInitMarker, setShowInitMarker] = useState(true);
 
   if (!isLoaded) {
-    return <p>Google map is loading ...</p>;
+    return <Loader />;
   }
 
   async function calculateRoute() {
@@ -59,8 +69,10 @@ function Map({
     try {
       // eslint-disable-next-line no-undef
       const directionsService = new google.maps.DirectionsService();
+      setShowInitMarker(false);
       const results = await directionsService.route({
-        origin: address,
+        // origin: address,
+        origin: center,
         destination: destinationValue,
         // eslint-disable-next-line no-undef
         travelMode: google.maps.TravelMode.DRIVING,
@@ -84,8 +96,9 @@ function Map({
     setDirectionsResponse(null);
     setDistance('');
     setDuration('');
+    setShowInitMarker(true);
     // originRef.current.value = '';
-    destinationValueClear();
+    setDestinationValue('');
     // destiantionRef.current.value = '';
   }
 
@@ -98,7 +111,7 @@ function Map({
       w="100%"
       marginTop="20px"
     >
-      <Box position="absolute" h="380px" w="100%">
+      <Box position="absolute" h="100%" w="100%">
         {/* Google Map Box */}
         <GoogleMap
           center={center}
@@ -109,8 +122,12 @@ function Map({
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
+            // clickableIcons: false,
           }}
           onLoad={map => setMap(map)}
+          onClick={ro => {
+            console.dir(ro);
+          }}
         >
           <OverlayView
             position={center}
@@ -127,7 +144,20 @@ function Map({
               </div>
             </div>
           </OverlayView>
-          <Marker position={center} />
+          {showInitMarker && <Marker position={center} />}
+          {showDeliveryCost && (
+            <>
+              {' '}
+              <Circle center={center} radius={1500} options={closeOpt}></Circle>
+              <Circle center={center} radius={3200} options={farOpt}></Circle>
+              <Circle
+                center={center}
+                radius={5200}
+                options={farthestOpt}
+              ></Circle>
+            </>
+          )}
+
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}
@@ -139,14 +169,14 @@ function Map({
         m={3}
         bgColor="white"
         shadow="base"
-        maxW="75%"
+        w="fit-content"
         // h="45px"
 
         // minW="container.md"
         zIndex="1"
         fontSize="14px"
       >
-        <HStack spacing={1} justifyContent="space-evenly">
+        <HStack spacing={1} justifyContent="flex-start">
           <Button
             h="30px"
             colorScheme="rgb(136, 106, 106);"
@@ -156,8 +186,8 @@ function Map({
           >
             Calculate Route
           </Button>
-          {/* <HStack spacing={8} mt={4} justifyContent="space-between"> */}
-          {destinationValue.length && (
+          {/* <HStack spacing={8} mt={4} justifyContent="flex-end"> */}
+          {!showInitMarker && (
             <div style={{ paddingRight: 20, paddingLeft: 20 }}>
               <Text>Distance: {distance} </Text>
               <Text>Duration: {duration} </Text>
@@ -185,6 +215,6 @@ function Map({
       </Box>
     </Flex>
   );
-}
+};
 
 export default Map;

@@ -4,7 +4,7 @@ import { amountReducer } from '../../helpers/amountReducer';
 import Buttons from 'components/Buttons/Buttons';
 import AddToCartButton from '../Buttons/AddToCartButton/AddToCartButton';
 import seperateCss from './dishCard.module.scss';
-import css from '../card.module.scss';
+import css from '../Shared/card.module.scss';
 
 const DishCard = ({ dish }) => {
   const { cart, setCart } = useMyContext();

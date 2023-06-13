@@ -1,8 +1,8 @@
 .shoppingCartPageContainer {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  height: 100vh;
+  // flex-wrap: wrap;
+  height: fit-content;
 }
 
 .form {
@@ -28,7 +28,7 @@ label:nth-child(2n + 1) {
 }
 
 .input {
-  width: 235px;
+  width: 253px;
   font-size: 15px;
   margin-top: 5px;
   border: 1px solid rgb(136, 106, 106);
@@ -50,7 +50,6 @@ label:nth-child(2n + 1) {
   left: 8px;
   font-size: 13px;
   z-index: -1000;
-  opacity: 1;
 }
 
 .marker {

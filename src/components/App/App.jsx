@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState, lazy, useContext, useEffect } from 'react';
-import SharedLayout from '../SharedLayout';
+import SharedLayout from '../Shared/SharedLayout';
 import ShopPage from 'pages/ShopPage';
 import CartContext from '../CartContext/CartContext';
 import { createdContext } from '../CartContext/CartContext';

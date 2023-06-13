@@ -3,7 +3,7 @@ import useMyContext from '../../helpers/useMyContext';
 import { amountReducer } from '../../helpers/amountReducer';
 import Buttons from '../Buttons/Buttons';
 import sepCss from './cardInCart.module.scss';
-import css from '../card.module.scss';
+import css from '../Shared/card.module.scss';
 
 const DishCardInCart = ({ dish }) => {
   const { dishName, type, imageURL, price } = dish;

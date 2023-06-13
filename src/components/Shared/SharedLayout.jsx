@@ -2,8 +2,10 @@ import { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
 // import Container from './Container';
 import useMyContext from 'helpers/useMyContext';
-import css from '../components/header/header.module.scss';
-import style from '../shared.module.scss';
+import css from '../header/header.module.scss';
+import style from '../Shared/shared.module.scss';
+
+import { Loader } from './Loader';
 
 const SharedLayout = () => {
   const { cart } = useMyContext();
@@ -40,7 +42,7 @@ const SharedLayout = () => {
         </div>
       </header>
       <main className={style.main}>
-        <Suspense fallback={<div>"Loading ..."</div>}>
+        <Suspense fallback={<Loader />}>
           <Outlet />
         </Suspense>
       </main>

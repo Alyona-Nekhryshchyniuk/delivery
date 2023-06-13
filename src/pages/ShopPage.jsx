@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import SideBar from '../components/SideBar/SideBar';
 import ListToSelectDish from '../components/ListToSelectDish/ListToSelectDish';
-import css from '../shared.module.scss';
+import css from '../components/Shared/shared.module.scss';
 
 const ShopPage = ({ setChosenShop, chosenShop }) => {
   return (
