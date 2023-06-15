@@ -4,18 +4,12 @@ import css from './userForm.module.scss';
 import cartCss from '../Cart/cart.module.scss';
 import style from '../Buttons/buttons.module.scss';
 import Map from '../map/Map';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import Cart from '../Cart/Cart';
 import { AddressInput } from './AddressInput';
+import { decodeSecretData } from '../../helpers/decodeSecretData';
 
-import {
-  useJsApiLoader,
-  GoogleMap,
-  Marker,
-  Autocomplete,
-  DirectionsRenderer,
-  OverlayView,
-} from '@react-google-maps/api';
+import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 
 let userSchema = object({
   name: string().required('Field is reqiuired'),
@@ -37,24 +31,13 @@ const submitHandle = (values, actions) => {
 const initValues = { name: '', email: '', phone: '', address: '' };
 const librariesToEnable = ['places'];
 
-// const onLoad = autocomplete => {
-//   console.log('autocomplete: ', autocomplete);
-// };
-
-//  onPlaceChanged () {
-//     if (this.autocomplete !== null) {
-//       console.log(this.autocomplete.getPlace())
-//     } else {
-//       console.log('Autocomplete is not loaded yet!')
-//     }
-//   }
 const UserForm = ({ chosenShop }) => {
   const [destinationValue, setDestinationValue] = useState('');
   const [showDeliveryCost, setDeliveryCost] = useState(false);
 
-  const { REACT_APP_GOOGLE_MAPS_API_KEY } = process.env;
+  const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: REACT_APP_GOOGLE_MAPS_API_KEY,
+    googleMapsApiKey: decodeSecretData(GOOGLE_MAPS_API_KEY),
     libraries: librariesToEnable,
   });
 
@@ -121,7 +104,7 @@ const UserForm = ({ chosenShop }) => {
                 <Field
                   name="email"
                   type="email"
-                  placeholder="Type your email"
+                  placeholder="Email"
                   className={css.input}
                 />
                 <ErrorMessage
@@ -136,7 +119,7 @@ const UserForm = ({ chosenShop }) => {
                   className={css.input}
                   name="phone"
                   type="text"
-                  placeholder="Type your phone number"
+                  placeholder="Phone number"
                 />
                 <ErrorMessage
                   name="phone"
@@ -185,7 +168,7 @@ const UserForm = ({ chosenShop }) => {
                     className={css.input}
                     name="address"
                     type="text"
-                    placeholder="Type your address"
+                    placeholder="Address"
                     // ref={destiantionRef}
 
                     onChange={e => {

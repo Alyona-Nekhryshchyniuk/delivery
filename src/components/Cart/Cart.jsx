@@ -5,12 +5,8 @@ import css from './cart.module.scss';
 import style from '../Buttons/buttons.module.scss';
 
 const Cart = ({ setDeliveryCost, showDeliveryCost }) => {
-  const { cart, setCart } = useMyContext();
-  // const [total, setTotal] = useState(() => {
-  //   let fullPrice = 0;
-  //   cart.forEach(dishObj => (fullPrice += +dishObj.price));
-  //   return fullPrice;
-  // });
+  const { cart } = useMyContext();
+ 
 
   const [total, setTotal] = useState(0);
 
@@ -21,10 +17,6 @@ const Cart = ({ setDeliveryCost, showDeliveryCost }) => {
       return sum;
     });
   }, [cart]);
-
-  // const submitHandle = e => {
-  //   console.log(cart);
-  // };
 
   const deliveryClickHandle = () => {
     console.log(showDeliveryCost);
@@ -62,11 +54,7 @@ const Cart = ({ setDeliveryCost, showDeliveryCost }) => {
           Total prize: <span className={css.highlighted}>{total} UAH</span>
         </span>
       </div>
-      {/* 
-      <button type="Submit" onClick={submitHandle} className={style.submitBtn}>
-        {' '}
-        Submit
-      </button> */}
+ 
     </div>
   );
 };

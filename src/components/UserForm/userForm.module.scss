@@ -34,10 +34,11 @@ label:nth-child(2n + 1) {
   border: 1px solid rgb(136, 106, 106);
   border-radius: 3px;
   padding: 3px;
+  color: rgb(68, 6, 6);
 }
 
 .popupBubble {
-  background-color: rgba(207, 197, 210);
+  background-color: cornsilk;
   border-radius: 7px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   padding: 5px;
@@ -50,6 +51,12 @@ label:nth-child(2n + 1) {
   left: 8px;
   font-size: 13px;
   z-index: -1000;
+  color: rgb(68, 6, 6);
+}
+
+.popupBubbleName {
+  font-weight: 700;
+  // color: rgb(109, 85, 85);
 }
 
 .marker {

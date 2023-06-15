@@ -14,7 +14,6 @@ const ShoppingCartPage = ({ chosenShop }) => {
       <ChakraProvider theme={theme}>
         {cart.length ? <UserForm chosenShop={chosenShop} /> : <EmptyCart />}
       </ChakraProvider>
-      {/* {cart.length ? <Cart /> : <EmptyCart />} */}
     </div>
   );
 };

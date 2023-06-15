@@ -1,7 +1,8 @@
 import DishCard from '../DishCard/DishCard';
 import { useEffect, useState } from 'react';
 import css from './listToSelectDish.module.scss';
-const basicURL = 'http://localhost:3001/';
+
+const basicURL = process.env.REACT_APP_BASICURL;
 
 const ListToSelectDish = ({ chosenShop }) => {
   const [dishes, setDishes] = useState([]);

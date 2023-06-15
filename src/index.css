@@ -1,4 +1,3 @@
-@import-normalize; /* bring in normalize.css styles */
 html {
   background-color: cornsilk;
 }
@@ -26,6 +25,6 @@ ul {
   padding: 0;
 }
 
-/* div.gmnoprint:has(> div) {
-  background-color: red;
-} */
+div[role='region'] button {
+  background-color: #31a74a;
+}

@@ -15,15 +15,13 @@ import { defineDestination } from '../../helpers/defineDestination';
 import { getCircleStyles } from '../../helpers/getCircleStyles';
 import { Loader } from '../Shared/Loader';
 import {
-  useJsApiLoader,
   GoogleMap,
   Marker,
-  Autocomplete,
   DirectionsRenderer,
   OverlayView,
   Circle,
 } from '@react-google-maps/api';
-import { useRef, useState, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 
 // const librariesToEnable = ['places'];
 
@@ -40,12 +38,6 @@ const Map = ({
   );
 
   let { closeOpt, farOpt, farthestOpt } = useMemo(() => getCircleStyles(), []);
-  // let { closeOpt, farOpt, farthestOpt } = getCircleStyles();
-  // const { isLoaded } = useJsApiLoader({
-  //   // googleMapsApiKey: process.env.google_maps_api_key,
-  //   googleMapsApiKey: 'AIzaSyCu5fHLU8xwV8qrXFtXiNK9g3_tZ9UHXT8',
-  //   libraries: librariesToEnable,
-  // });
 
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
@@ -138,7 +130,7 @@ const Map = ({
               <div className={css.marker}>
                 {/* 📍 */}
                 <div className={css.popupBubble}>
-                  <p>{name}</p>
+                  <p className={css.popupBubbleName}>{name}</p>
                   <p>{address}</p>{' '}
                 </div>
               </div>
@@ -170,9 +162,6 @@ const Map = ({
         bgColor="white"
         shadow="base"
         w="fit-content"
-        // h="45px"
-
-        // minW="container.md"
         zIndex="1"
         fontSize="14px"
       >
@@ -186,14 +175,13 @@ const Map = ({
           >
             Calculate Route
           </Button>
-          {/* <HStack spacing={8} mt={4} justifyContent="flex-end"> */}
           {!showInitMarker && (
             <div style={{ paddingRight: 20, paddingLeft: 20 }}>
               <Text>Distance: {distance} </Text>
               <Text>Duration: {duration} </Text>
             </div>
           )}
-          {/* </HStack> */}
+
           <IconButton
             h="30px"
             aria-label="center back"

@@ -1,6 +1,5 @@
 import { Suspense } from 'react';
 import { Outlet, NavLink } from 'react-router-dom';
-// import Container from './Container';
 import useMyContext from 'helpers/useMyContext';
 import css from '../header/header.module.scss';
 import style from '../Shared/shared.module.scss';
