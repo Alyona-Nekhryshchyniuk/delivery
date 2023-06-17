@@ -8,19 +8,21 @@ import { useState } from 'react';
 import Cart from '../Cart/Cart';
 import { AddressInput } from './AddressInput';
 import { decodeSecretData } from '../../helpers/decodeSecretData';
+import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
-import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
+import { useJsApiLoader } from '@react-google-maps/api';
+
 
 let userSchema = object({
-  name: string().required('Field is reqiuired'),
-  email: string().email('Must be a valid email').required('Field is reqiuired'),
+  name: string().required('Name is reqiuired'),
+  email: string().email('Must be a valid email').required('Email is reqiuired'),
   phone: string()
-    .required('Field is reqiuired')
+    .required('Phone is reqiuired')
     .min(5, 'Must be at least 5 characters long')
     .max(12, 'Must be no more than 12 characters long'),
-  address: string(),
-  // .required('Input correct destination address'),
+  address: string().required('Destination address is required'),
 });
+  
 
 const submitHandle = (values, actions) => {
   actions.setSubmitting(false);
@@ -35,45 +37,19 @@ const UserForm = ({ chosenShop }) => {
   const [destinationValue, setDestinationValue] = useState('');
   const [showDeliveryCost, setDeliveryCost] = useState(false);
 
-  const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
+  const GOOGLE_MAPS_API_KEY = decodeSecretData(
+    process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+  );
+ 
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: decodeSecretData(GOOGLE_MAPS_API_KEY),
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     libraries: librariesToEnable,
   });
 
   /** @type React.MutableRefObject<HTMLInputElement> */
   // const destiantionRef = useRef();
 
-  // if (!isLoaded) {
-  //   return <p>Google map is loading ...</p>;
-  // }
-
-  // const options = {
-  //   strictBounds: true,
-  // };
-
-  // // eslint-disable-next-line no-undef
-  // const bounds = new window.google.maps.LatLngBounds(
-  //   // eslint-disable-next-line no-undef
-  //   new google.maps.LatLng(46.619848, 30.542186), // top left corner of map
-  //   // eslint-disable-next-line no-undef
-  //   new google.maps.LatLng(46.290611, 30.84843) // bottom right corner
-  // );
-
-  // {
-  //   north: 30.781139,
-  //   south: 30.676082,
-  //   east: 46.582106,
-  //   west: 46.460209,
-  // };
-
-  // const restrictions = {
-  //   country: 'ua',
-  // };
-  // const destinationValueClear = () => {
-  //   setDestinationValue = '';
-  //   return;
-  // };
 
   return (
     <>
@@ -82,9 +58,9 @@ const UserForm = ({ chosenShop }) => {
         initialValues={initValues}
         onSubmit={submitHandle}
       >
-        {() => (
-          <Form className={css.shoppingCartPageContainer}>
-            <div className={css.form}>
+        {(props) => (
+          <Form className={css.form}>
+            <div className={css.inputsAndMapFormSection} onMouseLeave={()=>{destinationValue && props.setFieldValue('address', destinationValue.label)}}>
               <label className={css.label}>
                 Name
                 <Field
@@ -127,69 +103,79 @@ const UserForm = ({ chosenShop }) => {
                   className={css.errorMessage}
                 />
               </label>
-              {isLoaded ? (
-                // <label className={css.label}>
-                //   Address
-                //   <Autocomplete
-                //   // bounds={bounds}
-                //   // restrictions={restrictions}
-                //   // options={options}
-                //   >
-                //     <input
-                //       className={css.input}
-                //       name="address"
-                //       type="text"
-                //       placeholder="Type your address"
-                //       // ref={destiantionRef}
-
-                //       onChange={e => {
-                //         console.log('change');
-                //         setDestinationValue(e.target.value);
-                //       }}
-                //       // ref={destiantionRef}
-                //       value={destinationValue}
-                //     />
-                //   </Autocomplete>
-                //   <ErrorMessage
-                //     name="address"
-                //     component="div"
-                //     className={css.errorMessage}
-                //   />
-                // </label>
-                <AddressInput
+              {/* {isLoaded ? (<AddressInput
                   Autocomplete={Autocomplete}
                   setDestinationValue={setDestinationValue}
                   destinationValue={destinationValue}
                 />
               ) : (
-                <label className={css.label}>
+                <AddressInput
+                  setDestinationValue={setDestinationValue}
+                  destinationValue={destinationValue}
+                />
+              )} */}
+{isLoaded ? (<>
+  {/* (e.target.id === 'u' && e.relatedTarget.id === 'inputs' && value) && props.setFieldValue('address', value.label) */}
+               
+      <label className={css.hiddenLabel} >
+              Address
+              <div  className={css.autoCompleteInputContainer} >
+      <GooglePlacesAutocomplete apiKey={GOOGLE_MAPS_API_KEY}
+        selectProps={{ styles: {
+          input: (provided) => ({
+            ...provided,
+            color: 'blue',
+            
+          }),
+          option: (provided) => ({
+            ...provided,
+            color: 'rgb(136, 106, 106)',
+           fontWeight: 'normal',
+           FontSize: '15px'
+          }),
+          singleValue: (provided) => ({
+            ...provided,
+            color: 'black',
+          }),
+        },
+        destinationValue,
+          onChange: setDestinationValue,
+        }}
+      />
+      </div>
+                <Field
+                  className={css.hiddenInput}
+                  name="address"
+                  type="text"
+                />
+            
+                <ErrorMessage
+                name="address"
+                component="div"
+                className={css.errorMessage}
+              />
+               </label></>) :(<label className={css.hiddenLabel}>
                   Address
-                  <input
-                    className={css.input}
+                    <Field
+                      className={css.input}
+                      name="address"
+                      type="text"
+                    /><ErrorMessage
                     name="address"
-                    type="text"
-                    placeholder="Address"
-                    // ref={destiantionRef}
-
-                    onChange={e => {
-                      console.log('change');
-                      setDestinationValue(e.target.value);
-                    }}
-                    // ref={destiantionRef}
-                    value={destinationValue}
-                  />{' '}
-                </label>
-              )}
-
+                    component="div"
+                    className={css.errorMessage}
+                  /></label>)}
+              
+                
               <Map
                 chosenShop={chosenShop}
-                destinationValue={destinationValue}
+                destinationValue={destinationValue.label}
                 setDestinationValue={setDestinationValue}
                 isLoaded={isLoaded}
                 showDeliveryCost={showDeliveryCost}
               />
             </div>
-            <section className={cartCss.cartSectionContent}>
+            <section className={cartCss.cartFormSection}>
               {' '}
               <Cart
                 chosenShop={chosenShop}
@@ -200,9 +186,6 @@ const UserForm = ({ chosenShop }) => {
                 Submit
               </button>
             </section>
-
-            {/* <button type="submit">Submit</button> */}
-            {/* <SimpleMap /> */}
           </Form>
         )}
       </Formik>

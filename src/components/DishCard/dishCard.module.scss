@@ -13,6 +13,16 @@
   flex-direction: column;
   justify-content: space-between;
 }
+.dishCardContainer p{
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+.dishCardContainer p:last-of-type{
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
 .dishCardContainer:hover {
   border: 1px solid rgb(196, 184, 184);
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;

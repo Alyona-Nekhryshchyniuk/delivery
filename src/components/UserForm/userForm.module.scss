@@ -1,11 +1,12 @@
-.shoppingCartPageContainer {
+.form {
   display: flex;
   justify-content: center;
   // flex-wrap: wrap;
   height: fit-content;
+  padding-bottom: 20px;
 }
 
-.form {
+.inputsAndMapFormSection {
   // width: 550px;
   flex-basis: 50%;
   flex-wrap: wrap;
@@ -27,6 +28,22 @@ label:nth-child(2n + 1) {
   margin-right: 20px;
 }
 
+.hiddenLabel{
+  composes: label;
+
+// display: block;
+// height: 1px;
+// overflow: hidden;
+}
+.hiddenInput{
+height: 0px;
+}
+
+.autoCompleteInputContainer{
+  width: 250px;
+  margin-top: 5px;
+}
+
 .input {
   width: 253px;
   font-size: 15px;
@@ -35,6 +52,7 @@ label:nth-child(2n + 1) {
   border-radius: 3px;
   padding: 3px;
   color: rgb(68, 6, 6);
+  background-color: #fff;
 }
 
 .popupBubble {

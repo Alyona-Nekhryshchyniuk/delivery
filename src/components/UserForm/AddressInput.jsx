@@ -1,11 +1,11 @@
 import css from './userForm.module.scss';
 
 export const AddressInput = ({
-  Autocomplete,
   setDestinationValue,
   destinationValue,
+  Autocomplete,
 }) => {
-  const input = (
+  const inputTag = (
     <input
       className={css.input}
       name="address"
@@ -20,11 +20,10 @@ export const AddressInput = ({
       value={destinationValue}
     />
   );
-
   return (
     <label className={css.label}>
       Address
-      {Autocomplete ? <Autocomplete>{input}</Autocomplete> : { input }}
+      {Autocomplete ? <Autocomplete>{inputTag}</Autocomplete> : inputTag }
       {/* <ErrorMessage
         name="address"
         component="div"

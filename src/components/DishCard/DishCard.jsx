@@ -13,16 +13,14 @@ const DishCard = ({ dish }) => {
   const { imageURL, dishName, type, price } = dish;
 
   useEffect(() => {
-    // let storedCart = JSON.parse(localStorage.getItem('cart'));
-    // setCart(storedCart);
     setAmount({ type: 'mount', payload: { cart, dish } });
-  }, []);
+  }, [cart, dish]);
 
   return (
     <div className={seperateCss.dishCardContainer}>
       <div className={seperateCss.imgContainer}>
         {' '}
-        <img src={imageURL} className={css.img} />
+        <img src={imageURL} className={css.img} alt='dish' />
       </div>
       <h3 className={css.dishName}>{dishName}</h3>
       <div className={css.cardTextContainer}>
