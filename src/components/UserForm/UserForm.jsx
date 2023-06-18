@@ -6,7 +6,6 @@ import style from '../Buttons/buttons.module.scss';
 import Map from '../map/Map';
 import { useState } from 'react';
 import Cart from '../Cart/Cart';
-import { AddressInput } from './AddressInput';
 import { decodeSecretData } from '../../helpers/decodeSecretData';
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 
@@ -47,8 +46,6 @@ const UserForm = ({ chosenShop }) => {
     libraries: librariesToEnable,
   });
 
-  /** @type React.MutableRefObject<HTMLInputElement> */
-  // const destiantionRef = useRef();
 
 
   return (
@@ -103,39 +100,19 @@ const UserForm = ({ chosenShop }) => {
                   className={css.errorMessage}
                 />
               </label>
-              {/* {isLoaded ? (<AddressInput
-                  Autocomplete={Autocomplete}
-                  setDestinationValue={setDestinationValue}
-                  destinationValue={destinationValue}
-                />
-              ) : (
-                <AddressInput
-                  setDestinationValue={setDestinationValue}
-                  destinationValue={destinationValue}
-                />
-              )} */}
-{isLoaded ? (<>
-  {/* (e.target.id === 'u' && e.relatedTarget.id === 'inputs' && value) && props.setFieldValue('address', value.label) */}
-               
+              
+{isLoaded ? (<>      
       <label className={css.hiddenLabel} >
               Address
               <div  className={css.autoCompleteInputContainer} >
       <GooglePlacesAutocomplete apiKey={GOOGLE_MAPS_API_KEY}
-        selectProps={{ styles: {
-          input: (provided) => ({
-            ...provided,
-            color: 'blue',
-            
-          }),
+        selectProps={{ styles: 
+          {
           option: (provided) => ({
             ...provided,
             color: 'rgb(136, 106, 106)',
            fontWeight: 'normal',
            FontSize: '15px'
-          }),
-          singleValue: (provided) => ({
-            ...provided,
-            color: 'black',
           }),
         },
         destinationValue,

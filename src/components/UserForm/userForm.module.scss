@@ -1,19 +1,15 @@
 .form {
   display: flex;
   justify-content: center;
-  // flex-wrap: wrap;
   height: fit-content;
   padding-bottom: 20px;
 }
 
 .inputsAndMapFormSection {
-  // width: 550px;
   flex-basis: 50%;
   flex-wrap: wrap;
   display: flex;
   align-self: flex-start;
-  // flex-direction: column;
-  // align-items: flex-start;
 }
 
 .label {
@@ -30,19 +26,18 @@ label:nth-child(2n + 1) {
 
 .hiddenLabel{
   composes: label;
-
-// display: block;
-// height: 1px;
-// overflow: hidden;
+  margin-bottom: 0;
 }
 .hiddenInput{
 height: 0px;
 }
 
 .autoCompleteInputContainer{
-  width: 250px;
+  width: 253px;
   margin-top: 5px;
+ 
 }
+
 
 .input {
   width: 253px;
@@ -55,6 +50,11 @@ height: 0px;
   background-color: #fff;
 }
 
+.input:focus {
+padding-top: 6.3px;
+padding-bottom: 6.3px;
+outline-color: rgb(14, 118, 238);
+}
 .popupBubble {
   background-color: cornsilk;
   border-radius: 7px;
@@ -63,8 +63,6 @@ height: 0px;
   text-align: center;
   position: absolute;
   min-width: 180px;
-  // top: -100px;
-  // left: 0px;
   top: 4px;
   left: 8px;
   font-size: 13px;
@@ -74,7 +72,6 @@ height: 0px;
 
 .popupBubbleName {
   font-weight: 700;
-  // color: rgb(109, 85, 85);
 }
 
 .marker {

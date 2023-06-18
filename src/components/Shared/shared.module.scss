@@ -1,3 +1,16 @@
 .contentContainer {
   display: flex;
 }
+
+.emptyCartContentContainer{
+  font-size: 32px; 
+  margin-top: 30px; 
+  text-align: center;
+}
+
+.shopLink{
+  text-decoration: none;
+  color: rgb(68, 6, 6);
+  font-size: 30px;
+  font-weight: 600;
+}

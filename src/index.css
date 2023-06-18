@@ -51,43 +51,58 @@ div.css-1fdsijx-ValueContainer{
   font-weight: normal!important;
 }
 
-div.css-1lp111z-Input{
+/* div.css-1lp111z-Input{
   margin: 0;
   padding: 0;
-  height: 25px!important;
+  height: 30.5px!important;
  
+} */
+div.css-1fdsijx-ValueContainer > div.css-qbdosj-Input{
+  margin: 0!important;
+  height: 21px!important;
 }
+
+
+
 
 div.css-1hb7zxy-IndicatorsContainer > div{
   padding: 0px!important;
 }
 
 #u{
-  width: 250px;
+  width: 253px;
   height: 30px;
   background-color: #31a74a;
 }
 
-/* .css-t3ipsp-control{
-  box-shadow: none;
-} */
+
 
 .css-t3ipsp-control:active{
   border: 1.5px solid black!important;
   /* outline:1px solid black!important; */
   background-color: #fff!important;
   border: 1px solid black!important;
+  outline-color: black;
 }
-/* 
-.css-t3ipsp-control:focus{
+
+/* .css-t3ipsp-control:focus{
 border-color: #31a74a!important;
-} */
+}  */
 
 .css-t3ipsp-control:focus{
   border: 2px solid black!important;
+  outline-color: black;
   box-shadow: none;
  gap:0
 }
+
+/* div.css-t3ipsp-control{
+padding: 0px!important;
+} */
+
+
+
+
 .userForm_label__6J8P- > div > div:focus{
   padding: 0;
   margin: 0;
@@ -99,25 +114,7 @@ overflow: hidden;
 padding: 0;
 } */
 
-form > div > label.userForm_hiddenLabel__rZjUO.userForm_label__6J8P- > div > div:focus{
-  padding: 0!important;
-  gap:0!important;
-  height: 40px!important;
-  max-height: 40px!important;
-}
-.css-b62m3t-container:focus{
-  height: 40px!important;
-  max-height: 40px!important;
-overflow: hidden!important;
-padding: 0!important;
-gap:0!important;
-box-shadow: none!important;
-}
 
-.userForm_hiddenLabel__rZjUO.userForm_label__6J8P- > div > div{
-padding: 0;
-margin: 0;
-}
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover, 
