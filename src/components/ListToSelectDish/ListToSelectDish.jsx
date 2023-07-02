@@ -9,7 +9,7 @@ const ListToSelectDish = ({ chosenShop }) => {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`${basicURL}api/${chosenShop}`);
+      const response = await fetch(`${basicURL}/api/${chosenShop}`);
       const { dishes } = await response.json();
       setDishes(dishes);
     })();
