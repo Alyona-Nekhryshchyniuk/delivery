@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import ReactDOM from 'react-dom/client';
 import { App } from './components/App/App.jsx';
 import './index.css';
-import CartContext from 'components/CartContext/CartContext';
+import CartContext from './components/CartContext/CartContext.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

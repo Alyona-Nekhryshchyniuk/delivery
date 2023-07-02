@@ -1,7 +1,7 @@
 import { useEffect, useReducer } from 'react';
 import useMyContext from '../../helpers/useMyContext';
 import { amountReducer } from '../../helpers/amountReducer';
-import Buttons from 'components/Buttons/Buttons';
+import Buttons from '../Buttons/Buttons';
 import AddToCartButton from '../Buttons/AddToCartButton/AddToCartButton';
 import seperateCss from './dishCard.module.scss';
 import css from '../Shared/card.module.scss';
