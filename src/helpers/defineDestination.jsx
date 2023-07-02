@@ -3,7 +3,7 @@ export const defineDestination = chosenShop => {
   let address;
   let name;
 
-  // let chosenShop = 'pepperpoint';
+
   const coordinades = {
     yaposhka: { lat: 46.398950646372334, lng: 30.732959453049933 },
     vilkipalki: { lat: 46.47171105714595, lng: 30.74066311256781 },

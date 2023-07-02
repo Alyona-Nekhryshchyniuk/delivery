@@ -15,7 +15,7 @@ const DishCardInCart = ({ dish }) => {
     <div className={sepCss.dishCardContainer}>
       <div className={sepCss.imgContainer}>
         {' '}
-        <img src={imageURL} className={css.img} />
+        <img src={imageURL} className={css.img} alt='dish'/>
       </div>{' '}
       <h3 className={css.dishName}>{dishName}</h3>
       <div className={css.cardTextContainer}>
