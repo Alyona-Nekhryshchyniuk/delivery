@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "homepage": "https://Alyona-Nekhryshchyniuk.github.io/delivery/",
+  "engines": {
+    "node": ">=14.20.1"
+  },
   "dependencies": {
     "@chakra-ui/react": "^2.7.0",
     "@react-google-maps/api": "^2.18.1",
