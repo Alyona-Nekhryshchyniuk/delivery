@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
 import { useState, lazy } from 'react';
 import SharedLayout from '../Shared/SharedLayout';
-import ShopPage from 'pages/ShopPage';
+import ShopPage from '../../pages/ShopPage';
 import css from './app.module.scss';
-const ShoppingCartPage = lazy(() => import('pages/ShoppingCartPage'));
+const ShoppingCartPage = lazy(() => import('../../pages/ShoppingCartPage'));
 
 export const App = () => {
   const [chosenShop, setChosenShop] = useState('vilkipalki');
