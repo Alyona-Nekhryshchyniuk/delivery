@@ -1,15 +1,5 @@
 import css from '../UserForm/userForm.module.scss';
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Center,
-  Flex,
-  HStack,
-  IconButton,
-  Input,
-  Text,
-} from '@chakra-ui/react';
+import { Box, Button, Flex, HStack, IconButton, Text } from '@chakra-ui/react';
 import { FaLocationArrow, FaTimes } from 'react-icons/fa';
 import { defineDestination } from '../../helpers/defineDestination';
 import { getCircleStyles } from '../../helpers/getCircleStyles';
@@ -21,9 +11,9 @@ import {
   OverlayView,
   Circle,
 } from '@react-google-maps/api';
-import { useState, useMemo } from 'react';
-
-// const librariesToEnable = ['places'];
+import { useState, useMemo, memo } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Map = ({
   setDestinationValue,
@@ -34,26 +24,24 @@ const Map = ({
 }) => {
   let { center, address, name } = useMemo(
     () => defineDestination(chosenShop),
-    []
+    [chosenShop]
   );
 
   let { closeOpt, farOpt, farthestOpt } = useMemo(() => getCircleStyles(), []);
 
-  const [map, setMap] = useState(/** @type google.maps.Map */ (null));
+  const [map, setMap] = useState(null);
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState('');
   const [duration, setDuration] = useState('');
 
-  /** @type React.MutableRefObject<HTMLInputElement> */
-  // const originRef = useRef();
-  // /** @type React.MutableRefObject<HTMLInputElement> */
   const [showInitMarker, setShowInitMarker] = useState(true);
 
-  if (!isLoaded) {
-    return <Loader />;
-  }
 
-  async function calculateRoute() {
+    if (!isLoaded) {
+      return <Loader />;
+    }
+
+ async function calculateRoute() {
     if (address === '' || destinationValue === '') {
       return;
     }
@@ -73,9 +61,8 @@ const Map = ({
       setDistance(results.routes[0].legs[0].distance.text);
       setDuration(results.routes[0].legs[0].duration.text);
     } catch (e) {
-      e.message.includes('DIRECTIONS_ROUTE: NOT_FOUND')
-        ? console.log('Incorrect destination address')
-        : console.log(e.message);
+      if (e.name === 'InvalidValueError')
+        toast('Destination address wasn`t found');
     }
   }
 
@@ -89,22 +76,18 @@ const Map = ({
     setDistance('');
     setDuration('');
     setShowInitMarker(true);
-    // originRef.current.value = '';
     setDestinationValue('');
-    // destiantionRef.current.value = '';
   }
 
   return (
     <Flex
       position="relative"
       flexDirection="column"
-      // alignItems="start"
       h="380px"
       w="100%"
       marginTop="20px"
     >
       <Box position="absolute" h="100%" w="100%">
-        {/* Google Map Box */}
         <GoogleMap
           center={center}
           zoom={13}
@@ -114,7 +97,6 @@ const Map = ({
             streetViewControl: false,
             mapTypeControl: false,
             fullscreenControl: false,
-            // clickableIcons: false,
           }}
           onLoad={map => setMap(map)}
           onClick={ro => {
@@ -128,7 +110,6 @@ const Map = ({
           >
             <div>
               <div className={css.marker}>
-                {/* 📍 */}
                 <div className={css.popupBubble}>
                   <p className={css.popupBubbleName}>{name}</p>
                   <p>{address}</p>{' '}
@@ -140,11 +121,11 @@ const Map = ({
           {showDeliveryCost && (
             <>
               {' '}
-              <Circle center={center} radius={1500} options={closeOpt}></Circle>
-              <Circle center={center} radius={3200} options={farOpt}></Circle>
+              <Circle center={center} radius={2200} options={closeOpt}></Circle>
+              <Circle center={center} radius={5200} options={farOpt}></Circle>
               <Circle
                 center={center}
-                radius={5200}
+                radius={7800}
                 options={farthestOpt}
               ></Circle>
             </>
@@ -198,11 +179,11 @@ const Map = ({
             icon={<FaTimes />}
             onClick={clearRoute}
           />
-          {/* </ButtonGroup> */}
         </HStack>
-      </Box>
+      </Box>{' '}
+      <ToastContainer />
     </Flex>
   );
 };
 
-export default Map;
+export default memo(Map);

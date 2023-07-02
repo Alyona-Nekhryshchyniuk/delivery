@@ -1,12 +1,11 @@
 import DishCardInCart from '../DishCardInCart/DishCardInCart';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, memo } from 'react';
 import useMyContext from '../../helpers/useMyContext';
 import css from './cart.module.scss';
 import style from '../Buttons/buttons.module.scss';
 
 const Cart = ({ setDeliveryCost, showDeliveryCost }) => {
   const { cart } = useMyContext();
- 
 
   const [total, setTotal] = useState(0);
 
@@ -19,7 +18,7 @@ const Cart = ({ setDeliveryCost, showDeliveryCost }) => {
   }, [cart]);
 
   const deliveryClickHandle = () => {
-    console.log(showDeliveryCost);
+   
     setDeliveryCost(!showDeliveryCost);
   };
 
@@ -58,4 +57,4 @@ const Cart = ({ setDeliveryCost, showDeliveryCost }) => {
     </div>
   );
 };
-export default Cart;
+export default memo(Cart);

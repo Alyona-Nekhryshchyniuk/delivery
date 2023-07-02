@@ -38,7 +38,6 @@ h3{
   align-items: flex-start!important;
   min-height: 30.5px!important;
   max-height: 30.5px!important;
-  /* height: 20px; */
   padding: 3px;
   border: 1px solid rgb(136, 106, 106)!important;
 }
@@ -46,23 +45,14 @@ h3{
 div.css-1fdsijx-ValueContainer{
   margin: 0;
   padding: 0;
-  /* height: 30.5px!important; */
   font-size:15px!important;
   font-weight: normal!important;
 }
 
-/* div.css-1lp111z-Input{
-  margin: 0;
-  padding: 0;
-  height: 30.5px!important;
- 
-} */
 div.css-1fdsijx-ValueContainer > div.css-qbdosj-Input{
   margin: 0!important;
   height: 21px!important;
 }
-
-
 
 
 div.css-1hb7zxy-IndicatorsContainer > div{
@@ -82,7 +72,6 @@ div.css-1hb7zxy-IndicatorsContainer > div{
   /* outline:1px solid black!important; */
   background-color: #fff!important;
   border: 1px solid black!important;
-  outline-color: black;
 }
 
 /* .css-t3ipsp-control:focus{

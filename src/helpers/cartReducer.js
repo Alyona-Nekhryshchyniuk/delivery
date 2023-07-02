@@ -14,6 +14,8 @@ export const cartReducer = (prevCart, action) => {
       copy.splice(ind, 1);
       localStorage.setItem('cart', JSON.stringify(copy));
       return copy;
+
+      default: break;
   }
 
   return prevCart.map((el, _, arr) => {

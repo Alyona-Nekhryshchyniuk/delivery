@@ -6,11 +6,11 @@ import './index.css';
 import CartContext from 'components/CartContext/CartContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  // <React.StrictMode>
+  <React.StrictMode>
   <BrowserRouter basename="/delivery">
     <CartContext>
       <App />
     </CartContext>
   </BrowserRouter>
-  // </React.StrictMode>
+  </React.StrictMode>
 );
