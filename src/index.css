@@ -63,18 +63,17 @@ div.css-1hb7zxy-IndicatorsContainer > div {
   padding: 0px !important;
 }
 
-#u {
+/* #u {
   width: 253px;
   height: 30px;
   background-color: #31a74a;
-}
+} */
 
-.css-t3ipsp-control:active {
+/* .css-t3ipsp-control:active {
   border: 1.5px solid black !important;
-  /* outline:1px solid black!important; */
   background-color: #fff !important;
   border: 1px solid black !important;
-}
+} */
 
 /* .css-t3ipsp-control:focus{
 border-color: #31a74a!important;
