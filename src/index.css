@@ -67,6 +67,23 @@ div.css-1hb7zxy-IndicatorsContainer > div {
   height: 30px;
   background-color: #31a74a;
 }
+
+.css-qbdosj-Input {
+  padding-top: 20px !important;
+}
+
+#react-select-3-placeholder {
+  font-weight: 400;
+}
+
+label.userForm_hiddenLabel__rZjUO.userForm_label__6J8P-
+  > div
+  > div
+  > div
+  > div.css-1fdsijx-ValueContainer {
+  margin: 0;
+  padding: 0;
+}
 /*
 /* .css-t3ipsp-control:active {
   border: 1.5px solid black !important;
