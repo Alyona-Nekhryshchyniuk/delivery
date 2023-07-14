@@ -29,80 +29,71 @@ div[role='region'] button {
   background-color: #31a74a;
 }
 
-h3{
+h3 {
   margin-top: 10px;
   margin-bottom: 10px;
 }
 .css-13cymwt-control {
-  display: flex!important;
-  align-items: flex-start!important;
-  min-height: 30.5px!important;
-  max-height: 30.5px!important;
+  display: flex !important;
+  align-items: flex-start !important;
+  min-height: 30.5px !important;
+  max-height: 30.5px !important;
   padding: 3px;
-  border: 1px solid rgb(136, 106, 106)!important;
+  border: 1px solid rgb(136, 106, 106) !important;
 }
 
-div.css-1fdsijx-ValueContainer{
+div.css-1fdsijx-ValueContainer {
   margin: 0;
-  padding: 0;
-  font-size:15px!important;
-  font-weight: normal!important;
+  padding-left: 2px;
+  font-size: 15px !important;
+  font-weight: normal !important;
 }
 
-div.css-1fdsijx-ValueContainer > div.css-qbdosj-Input{
-  margin: 0!important;
-  height: 21px!important;
+div.css-1fdsijx-ValueContainer > div.css-qbdosj-Input {
+  margin: 0 !important;
+  height: 21px !important;
 }
 
-
-div.css-1hb7zxy-IndicatorsContainer > div{
-  padding: 0px!important;
+div.css-1hb7zxy-IndicatorsContainer > div {
+  padding: 0px !important;
 }
 
-#u{
+#u {
   width: 253px;
   height: 30px;
   background-color: #31a74a;
 }
 
-
-
-.css-t3ipsp-control:active{
-  border: 1.5px solid black!important;
+.css-t3ipsp-control:active {
+  border: 1.5px solid black !important;
   /* outline:1px solid black!important; */
-  background-color: #fff!important;
-  border: 1px solid black!important;
+  background-color: #fff !important;
+  border: 1px solid black !important;
 }
 
 /* .css-t3ipsp-control:focus{
 border-color: #31a74a!important;
 }  */
 
-.css-t3ipsp-control:focus{
-  border: 2px solid black!important;
+.css-t3ipsp-control:focus {
+  border: 2px solid black !important;
   outline-color: black;
   box-shadow: none;
- gap:0
+  gap: 0;
 }
 
 /* div.css-t3ipsp-control{
 padding: 0px!important;
 } */
 
-
-
+/* 
 
 .userForm_label__6J8P- > div > div:focus{
   padding: 0;
   margin: 0;
-}
-
-/* .css-b62m3t-container{
-height: 18px;
-overflow: hidden;
-padding: 0;
 } */
 
+/* 
 
 
 input:-webkit-autofill,
@@ -110,8 +101,13 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus, 
 input:-webkit-autofill:active{
     -webkit-box-shadow: 0 0 0 30px #fff inset !important;
-}
+} */
 
+/* .css-b62m3t-container{
+height: 18px;
+overflow: hidden;
+padding: 0;
+} */
 /* .css-1hb7zxy-IndicatorsContainer{
   padding: 0px!important;
 }  */
